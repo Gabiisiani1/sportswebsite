@@ -1,0 +1,3 @@
+INSERT INTO sport (name, description, fact) VALUES ('Football', 'The world''s most popular sport played in over 200 countries.', 'Brazil has won the FIFA World Cup a record 5 times.');
+INSERT INTO sport (name, description, fact) VALUES ('Basketball', 'Born in 1891, now one of the biggest sports on the planet.', 'Michael Jordan won 6 NBA Championships with the Chicago Bulls.');
+INSERT INTO sport (name, description, fact) VALUES ('Formula 1', 'The pinnacle of motorsport combining speed, technology and skill.', 'Michael Schumacher and Lewis Hamilton both won 7 World Championships.');

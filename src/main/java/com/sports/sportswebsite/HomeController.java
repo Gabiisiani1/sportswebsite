@@ -9,15 +9,16 @@ import java.util.List;
 @Controller
 public class HomeController {
 
+    private final SportRepository sportRepository;
+
+    public HomeController(SportRepository sportRepository) {
+        this.sportRepository = sportRepository;
+    }
+
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("title", "Sports History Website");
-        model.addAttribute("sports", Arrays.asList("Football", "Basketball", "Formula 1"));
-        model.addAttribute("facts", Arrays.asList(
-                "Football is the most popular sport in the world with over 4 billion fans.",
-                "Basketball was invented in 1891 by Dr. James Naismith.",
-                "Formula 1 World Championship started in 1950."
-        ));
+        model.addAttribute("sports", sportRepository.findAll());
         return "index";
     }
 
