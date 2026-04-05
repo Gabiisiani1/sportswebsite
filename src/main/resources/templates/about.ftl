@@ -25,7 +25,9 @@
 <nav>
     <span class="logo">🏆 SportsHistory</span>
     <a href="/">Home</a>
+    <a href="/search">Search</a>
     <a href="/about">About</a>
+    <a href="/athletes">Athletes</a>
 </nav>
 
 <div class="hero">

@@ -23,6 +23,12 @@ public class Sport {
     private String fact3;
     private String fact4;
     private String fact5;
+    @Column(name = "image_url")
+    private String imageUrl;
+    @Column(name = "athlete_image_url")
+    private String athleteImageUrl;
+    @Column(name = "athlete_name")
+    private String athleteName;
 
     public Sport() {}
 
@@ -37,4 +43,7 @@ public class Sport {
     public String getFact3() { return fact3; }
     public String getFact4() { return fact4; }
     public String getFact5() { return fact5; }
+    public String getImageUrl() { return imageUrl; }
+    public String getAthleteImageUrl() { return athleteImageUrl; }
+    public String getAthleteName() { return athleteName; }
 }

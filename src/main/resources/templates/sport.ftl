@@ -11,33 +11,23 @@
         nav .logo { color: #e94560; font-size: 1.3em; margin-right: auto; }
         .hero {
             background: linear-gradient(135deg, #16213e, #0f3460);
-            padding: 60px 40px;
+            padding: 40px;
             text-align: center;
         }
-        .hero .emoji { font-size: 5em; margin-bottom: 20px; }
+        .hero img {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        .hero .emoji { font-size: 4em; margin-bottom: 10px; }
         .hero h1 { color: #e94560; font-size: 3em; margin-bottom: 15px; }
         .hero p { color: #aaa; font-size: 1.2em; max-width: 700px; margin: 0 auto; }
         .container { padding: 40px; max-width: 900px; margin: 0 auto; }
         h2 { color: #e94560; margin-bottom: 20px; font-size: 1.8em; }
-        .fact {
-            background-color: #16213e;
-            border-radius: 10px;
-            padding: 20px 25px;
-            margin: 15px 0;
-            border-left: 4px solid #e94560;
-            font-size: 1.1em;
-            line-height: 1.6;
-        }
-        .back-btn {
-            display: inline-block;
-            margin-bottom: 30px;
-            background-color: #16213e;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: bold;
-        }
+        .fact { background-color: #16213e; border-radius: 10px; padding: 20px 25px; margin: 15px 0; border-left: 4px solid #e94560; font-size: 1.1em; line-height: 1.6; }
+        .back-btn { display: inline-block; margin-bottom: 30px; background-color: #16213e; color: white; padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: bold; }
         .back-btn:hover { background-color: #e94560; }
     </style>
 </head>
@@ -46,10 +36,13 @@
 <nav>
     <span class="logo">🏆 SportsHistory</span>
     <a href="/">Home</a>
+    <a href="/athletes">Athletes</a>
+    <a href="/search">Search</a>
     <a href="/about">About</a>
 </nav>
 
 <div class="hero">
+
     <div class="emoji">${sport.emoji}</div>
     <h1>${sport.name}</h1>
     <p>${sport.description}</p>

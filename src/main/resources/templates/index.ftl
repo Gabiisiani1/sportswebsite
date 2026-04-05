@@ -14,13 +14,20 @@
         .hero p { color: #aaa; font-size: 1.2em; }
         .container { padding: 40px; }
         .cards { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-        .card { background-color: #16213e; border-radius: 10px; padding: 30px; width: 260px; text-align: center; transition: transform 0.3s; }
+        .card-link { text-decoration: none; color: inherit; }
+        .card {
+            background-color: #16213e;
+            border-radius: 10px;
+            padding: 30px;
+            width: 260px;
+            text-align: center;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
         .card:hover { transform: translateY(-5px); }
         .card .emoji { font-size: 3em; margin-bottom: 15px; }
         .card h2 { color: #e94560; margin-bottom: 10px; }
-        .card p { color: #aaa; margin-bottom: 15px; font-size: 0.95em; }
-        .card a { display: inline-block; margin-top: 15px; background-color: #e94560; color: white; padding: 8px 20px; border-radius: 20px; text-decoration: none; font-weight: bold; }
-        .card a:hover { background-color: #c73652; }
+        .card p { color: #aaa; font-size: 0.95em; }
         h2.section-title { color: #e94560; text-align: center; font-size: 2em; margin: 40px 0 20px; }
     </style>
 </head>
@@ -29,6 +36,8 @@
 <nav>
     <span class="logo">🏆 SportsHistory</span>
     <a href="/">Home</a>
+    <a href="/athletes">Athletes</a>
+    <a href="/search">Search</a>
     <a href="/about">About</a>
 </nav>
 
@@ -41,12 +50,16 @@
     <h2 class="section-title">Browse Sports</h2>
     <div class="cards">
         <#list sports as sport>
-        <div class="card">
-            <div class="emoji">${sport.emoji}</div>
-            <h2>${sport.name}</h2>
-            <p>${sport.description}</p>
-            <a href="/sport/${sport.urlName}">Explore</a>
-        </div>
+        <a href="/sport/${sport.urlName}" class="card-link">
+            <div class="card">
+                <#if sport.imageUrl?? && sport.imageUrl?has_content>
+                    <img src="${sport.imageUrl}" alt="${sport.name}" onerror="this.style.display='none'" style="width:100%; height:150px; object-fit:cover; border-radius:8px; margin-bottom:15px;"/>
+                </#if>
+                <div class="emoji">${sport.emoji}</div>
+                <h2>${sport.name}</h2>
+                <p>${sport.description}</p>
+            </div>
+        </a>
         </#list>
     </div>
 </div>
