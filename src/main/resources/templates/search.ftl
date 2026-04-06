@@ -60,7 +60,23 @@
             white-space: nowrap;
         }
         .result a:hover { background-color: #c73652; }
+        .athlete-result {
+            background-color: #16213e;
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 15px 0;
+            border-left: 4px solid #e94560;
+            transition: transform 0.2s;
+        }
+        .athlete-result.georgian { border-left: 4px solid #FFD700; }
+        .athlete-result:hover { transform: translateX(5px); }
+        .athlete-result h3 { color: #e94560; margin-bottom: 5px; }
+        .athlete-result.georgian h3 { color: #FFD700; }
+        .athlete-result .sport-tag { background-color: #0f3460; padding: 3px 10px; border-radius: 10px; font-size: 0.8em; margin-left: 10px; }
+        .athlete-result p { color: #aaa; font-size: 0.95em; margin-top: 8px; }
+        .athlete-result .achievement { color: #e94560; font-size: 0.85em; font-weight: bold; margin-top: 8px; }
         .no-results { text-align: center; color: #aaa; font-size: 1.2em; margin-top: 40px; }
+        .section-title { color: #e94560; font-size: 1.8em; margin: 30px 0 15px; border-bottom: 2px solid #e94560; padding-bottom: 10px; }
     </style>
 </head>
 <body>
@@ -68,38 +84,53 @@
 <nav>
     <span class="logo">🏆 SportsHistory</span>
     <a href="/">Home</a>
+    <a href="/athletes">Athletes</a>
     <a href="/search">Search</a>
     <a href="/about">About</a>
-    <a href="/athletes">Athletes</a>
 </nav>
 
 <div class="hero">
-    <h1>🔍 Search Sports</h1>
+    <h1>🔍 Search</h1>
     <form class="search-box" action="/search" method="get">
-        <input type="text" name="keyword" placeholder="Search for a sport..." value="${keyword!}"/>
+        <input type="text" name="keyword" placeholder="Search sports or athletes..." value="${keyword!}"/>
         <button type="submit">Search</button>
     </form>
 </div>
 
 <div class="container">
     <#if keyword?? && keyword?has_content>
-        <h2>Results for "${keyword}"</h2>
-        <#if results?size == 0>
-            <p class="no-results">No sports found for "${keyword}" 😕 Try another search!</p>
-        <#else>
-            <#list results as sport>
-            <div class="result">
-                <span class="emoji">${sport.emoji}</span>
-                <div>
-                    <h3>${sport.name}</h3>
-                    <p>${sport.description}</p>
-                </div>
-                <a href="/sport/${sport.urlName}">View →</a>
-            </div>
-            </#list>
+
+        <#if results?size == 0 && athleteResults?size == 0>
+            <p class="no-results">No results found for "${keyword}" 😕 Try another search!</p>
         </#if>
+
+        <#if results?size gt 0>
+        <h2 class="section-title">🏟️ Sports (${results?size})</h2>
+        <#list results as sport>
+        <div class="result">
+            <span class="emoji">${sport.emoji}</span>
+            <div>
+                <h3>${sport.name}</h3>
+                <p>${sport.description}</p>
+            </div>
+            <a href="/sport/${sport.urlName}">View →</a>
+        </div>
+        </#list>
+        </#if>
+
+        <#if athleteResults?size gt 0>
+        <h2 class="section-title">🌟 Athletes (${athleteResults?size})</h2>
+        <#list athleteResults as athlete>
+        <div class="athlete-result <#if athlete.georgian>georgian</#if>">
+            <h3>${athlete.name}<#if athlete.georgian> 🇬🇪</#if> <span class="sport-tag">${athlete.sport}</span></h3>
+            <p>${athlete.info}</p>
+            <p class="achievement">🏆 ${athlete.achievement}</p>
+        </div>
+        </#list>
+        </#if>
+
     <#else>
-        <h2>All Sports</h2>
+        <h2 class="section-title">🏟️ All Sports</h2>
         <#list results as sport>
         <div class="result">
             <span class="emoji">${sport.emoji}</span>

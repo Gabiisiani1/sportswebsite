@@ -13,16 +13,33 @@ public class Sport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @Column(length = 1000)
     private String description;
+    @Column(length = 1000)
     private String fact;
     private String emoji;
     @Column(name = "url_name")
     private String urlName;
+    @Column(length = 1000)
     private String fact1;
+    @Column(length = 1000)
     private String fact2;
+    @Column(length = 1000)
     private String fact3;
+    @Column(length = 1000)
     private String fact4;
+    @Column(length = 1000)
     private String fact5;
+    @Column(length = 1000)
+    private String fact6;
+    @Column(length = 1000)
+    private String fact7;
+    @Column(length = 1000)
+    private String fact8;
+    @Column(length = 1000)
+    private String fact9;
+    @Column(length = 1000)
+    private String fact10;
     @Column(name = "image_url")
     private String imageUrl;
     @Column(name = "athlete_image_url")
@@ -43,6 +60,11 @@ public class Sport {
     public String getFact3() { return fact3; }
     public String getFact4() { return fact4; }
     public String getFact5() { return fact5; }
+    public String getFact6() { return fact6; }
+    public String getFact7() { return fact7; }
+    public String getFact8() { return fact8; }
+    public String getFact9() { return fact9; }
+    public String getFact10() { return fact10; }
     public String getImageUrl() { return imageUrl; }
     public String getAthleteImageUrl() { return athleteImageUrl; }
     public String getAthleteName() { return athleteName; }

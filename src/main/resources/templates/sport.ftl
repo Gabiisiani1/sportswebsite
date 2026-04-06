@@ -51,11 +51,17 @@
 <div class="container">
     <a href="/" class="back-btn">← Back to Home</a>
     <h2>📖 Key Facts</h2>
-    <div class="fact">${sport.fact1}</div>
-    <div class="fact">${sport.fact2}</div>
-    <div class="fact">${sport.fact3}</div>
-    <div class="fact">${sport.fact4}</div>
-    <div class="fact">${sport.fact5}</div>
+        <div class="fact">${sport.fact1}</div>
+        <div class="fact">${sport.fact2}</div>
+        <div class="fact">${sport.fact3}</div>
+        <div class="fact">${sport.fact4}</div>
+        <div class="fact">${sport.fact5}</div>
+        <#if sport.fact6?? && sport.fact6?has_content><div class="fact">${sport.fact6}</div></#if>
+        <#if sport.fact7?? && sport.fact7?has_content><div class="fact">${sport.fact7}</div></#if>
+        <#if sport.fact8?? && sport.fact8?has_content><div class="fact">${sport.fact8}</div></#if>
+        <#if sport.fact9?? && sport.fact9?has_content><div class="fact">${sport.fact9}</div></#if>
+        <#if sport.fact10?? && sport.fact10?has_content><div class="fact">${sport.fact10}</div></#if>
+
 </div>
 
 </body>

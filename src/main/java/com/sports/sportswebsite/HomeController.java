@@ -58,8 +58,10 @@ public class HomeController {
     public String search(@RequestParam(required = false) String keyword, Model model) {
         if (keyword != null && !keyword.isEmpty()) {
             model.addAttribute("results", sportRepository.searchByName(keyword));
+            model.addAttribute("athleteResults", athleteRepository.searchAthletes(keyword));
         } else {
             model.addAttribute("results", sportRepository.findAll());
+            model.addAttribute("athleteResults", java.util.Collections.emptyList());
         }
         model.addAttribute("keyword", keyword);
         model.addAttribute("title", "Search Sports");

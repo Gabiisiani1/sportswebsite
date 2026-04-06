@@ -37,10 +37,7 @@
 
 <div class="container">
 
-    <div class="card">
-        <h2>🏆 What is SportsHistory?</h2>
-        <p>SportsHistory is a web application built with Java and Spring Boot as part of a university web programming course. The goal is to provide interesting historical facts and information about the world's greatest sports in one place.</p>
-    </div>
+
 
     <div class="card">
         <h2>🌍 Sports We Cover</h2>
