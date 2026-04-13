@@ -21,6 +21,8 @@ public class HomeController {
     public String index(Model model) {
         model.addAttribute("title", "Sports History Website");
         model.addAttribute("sports", sportRepository.findAll());
+        model.addAttribute("sportCount", sportRepository.count());
+        model.addAttribute("athleteCount", athleteRepository.count());
         return "index";
     }
 
@@ -69,18 +71,45 @@ public class HomeController {
     }
 
     @GetMapping("/athletes")
-    public String athletes(Model model) {
+    public String athletes(Model model,
+                           @RequestParam(defaultValue = "0") int page,
+                           @RequestParam(required = false) String sport) {
+        int pageSize = 9;
+        org.springframework.data.domain.Pageable pageable =
+                org.springframework.data.domain.PageRequest.of(page, pageSize,
+                        org.springframework.data.domain.Sort.by("id").ascending());
+        org.springframework.data.domain.Page<Athlete> athletePage;
+
+        if (sport != null && !sport.isEmpty()) {
+            athletePage = athleteRepository.findBySport(sport, pageable);
+            model.addAttribute("selectedSport", sport);
+            model.addAttribute("selectedSportEncoded", sport.replace("&", "%26"));
+        } else {
+            athletePage = athleteRepository.findAll(pageable);
+        }
+
         model.addAttribute("title", "Athletes");
+        model.addAttribute("athletes", athletePage.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", athletePage.getTotalPages());
         model.addAttribute("georgianAthletes", athleteRepository.findByGeorgianTrue());
-        model.addAttribute("footballAthletes", athleteRepository.findBySport("Football"));
-        model.addAttribute("basketballAthletes", athleteRepository.findBySport("Basketball"));
-        model.addAttribute("formula1Athletes", athleteRepository.findBySport("Formula 1"));
-        model.addAttribute("tennisAthletes", athleteRepository.findBySport("Tennis"));
-        model.addAttribute("nflAthletes", athleteRepository.findBySport("NFL"));
-        model.addAttribute("mmaAthletes", athleteRepository.findBySport("MMA & UFC"));
-        model.addAttribute("rugbyAthletes", athleteRepository.findBySport("Rugby"));
-        model.addAttribute("olympicsAthletes", athleteRepository.findBySport("Olympics"));
-        model.addAttribute("worldcupAthletes", athleteRepository.findBySport("World Cup 2026"));
+        model.addAttribute("footballCount", athleteRepository.findBySport("Football").size());
+        model.addAttribute("basketballCount", athleteRepository.findBySport("Basketball").size());
+        model.addAttribute("formula1Count", athleteRepository.findBySport("Formula 1").size());
+        model.addAttribute("tennisCount", athleteRepository.findBySport("Tennis").size());
+        model.addAttribute("nflCount", athleteRepository.findBySport("NFL").size());
+        model.addAttribute("mmaCount", athleteRepository.findBySport("MMA & UFC").size());
+        model.addAttribute("rugbyCount", athleteRepository.findBySport("Rugby").size());
+        model.addAttribute("olympicsCount", athleteRepository.findBySport("Olympics").size());
+        model.addAttribute("worldcupCount", athleteRepository.findBySport("World Cup 2026").size());
         return "athletes";
+    }
+
+
+    @GetMapping("/georgian-athletes")
+    public String georgianAthletes(Model model) {
+        model.addAttribute("title", "Georgian Athletes");
+        model.addAttribute("georgianAthletes", athleteRepository.findByGeorgianTrueOrderBySportAsc());
+        return "georgian-athletes";
     }
 }

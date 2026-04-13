@@ -85,6 +85,7 @@
     <span class="logo">🏆 SportsHistory</span>
     <a href="/">Home</a>
     <a href="/athletes">Athletes</a>
+    <a href="/georgian-athletes">🇬🇪 Georgian</a>
     <a href="/search">Search</a>
     <a href="/about">About</a>
 </nav>

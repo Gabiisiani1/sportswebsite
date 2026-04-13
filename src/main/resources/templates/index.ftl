@@ -3,6 +3,7 @@
 <head>
     <title>${title}</title>
     <style>
+    html { scroll-behavior: smooth; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: Arial, sans-serif; background-color: #1a1a2e; color: white; }
         nav { background-color: #16213e; padding: 15px 30px; display: flex; gap: 20px; align-items: center; }
@@ -12,6 +13,15 @@
         .hero { text-align: center; padding: 60px 40px; background: linear-gradient(135deg, #16213e, #0f3460); }
         .hero h1 { color: #e94560; font-size: 3em; margin-bottom: 10px; }
         .hero p { color: #aaa; font-size: 1.2em; }
+        .counter-box {
+            background-color: #e94560;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .counter-box:hover { transform: translateY(-3px); }
         .container { padding: 40px; }
         .cards { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
         .card-link { text-decoration: none; color: inherit; }
@@ -23,8 +33,9 @@
             text-align: center;
             transition: transform 0.3s;
             cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .card:hover { transform: translateY(-5px); }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(233,69,96,0.3); }
         .card .emoji { font-size: 3em; margin-bottom: 15px; }
         .card h2 { color: #e94560; margin-bottom: 10px; }
         .card p { color: #aaa; font-size: 0.95em; }
@@ -37,6 +48,7 @@
     <span class="logo">🏆 SportsHistory</span>
     <a href="/">Home</a>
     <a href="/athletes">Athletes</a>
+    <a href="/georgian-athletes">🇬🇪 Georgian</a>
     <a href="/search">Search</a>
     <a href="/about">About</a>
 </nav>
@@ -44,10 +56,24 @@
 <div class="hero">
     <h1>🏆 Sports History Website</h1>
     <p>Explore the history of the world's greatest sports</p>
+    <div style="display:flex; justify-content:center; gap:40px; margin-top:30px;">
+        <a href="/#sports" style="text-decoration:none;">
+            <div class="counter-box">
+                <div style="font-size:2em; font-weight:bold; color:white;">${sportCount}</div>
+                <div style="font-size:0.9em; color:white;">Sports</div>
+            </div>
+        </a>
+        <a href="/athletes" style="text-decoration:none;">
+            <div class="counter-box">
+                <div style="font-size:2em; font-weight:bold; color:white;">${athleteCount}</div>
+                <div style="font-size:0.9em; color:white;">Athletes</div>
+            </div>
+        </a>
+    </div>
 </div>
 
 <div class="container">
-    <h2 class="section-title">Browse Sports</h2>
+    <h2 class="section-title" id="sports">Browse Sports</h2>
     <div class="cards">
         <#list sports as sport>
         <a href="/sport/${sport.urlName}" class="card-link">

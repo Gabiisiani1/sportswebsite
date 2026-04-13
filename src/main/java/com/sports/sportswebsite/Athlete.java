@@ -1,5 +1,6 @@
 package com.sports.sportswebsite;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,10 +15,13 @@ public class Athlete {
     private String name;
     private String sport;
     private String nationality;
+    @Column(length = 1000)
     private String info;
+    @Column(length = 500)
     private String achievement;
     private boolean georgian;
-
+    @Column(columnDefinition = "boolean default false")
+    private boolean retired;
     public Athlete() {}
 
     public Long getId() { return id; }
@@ -27,4 +31,5 @@ public class Athlete {
     public String getInfo() { return info; }
     public String getAchievement() { return achievement; }
     public boolean isGeorgian() { return georgian; }
+    public boolean isRetired() { return retired; }
 }

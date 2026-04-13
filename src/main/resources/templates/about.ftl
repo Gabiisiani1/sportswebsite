@@ -28,6 +28,8 @@
     <a href="/search">Search</a>
     <a href="/about">About</a>
     <a href="/athletes">Athletes</a>
+    <a href="/georgian-athletes">🇬🇪 Georgian</a>
+
 </nav>
 
 <div class="hero">
