@@ -1,0 +1,69 @@
+/* SportsHistory Main Stylesheet */
+:root {
+    --primary: #e94560;
+    --background: #1a1a2e;
+    --card: #16213e;
+    --deep: #0f3460;
+    --text: #ffffff;
+    --muted: #aaaaaa;
+    --gold: #FFD700;
+    --silver: #C0C0C0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: var(--card);
+    padding: 15px 30px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+nav a {
+    color: var(--text);
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+nav a:hover {
+    background-color: var(--primary);
+}
+
+.card {
+    background-color: var(--card);
+    border-radius: 10px;
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(233,69,96,0.3);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #c73652;
+}
