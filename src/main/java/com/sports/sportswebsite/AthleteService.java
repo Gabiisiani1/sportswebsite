@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AthleteService {
@@ -18,6 +19,10 @@ public class AthleteService {
     public List<Athlete> getAllAthletes() {
         log.info("Fetching all athletes");
         return athleteRepository.findAll();
+    }
+
+    public Optional<Athlete> getAthleteById(Long id) {
+        return athleteRepository.findById(id);
     }
 
     public List<Athlete> getGeorgianAthletes() {
@@ -42,5 +47,10 @@ public class AthleteService {
     public void deleteAthlete(Long id) {
         log.warn("Deleting athlete with id: {}", id);
         athleteRepository.deleteById(id);
+    }
+
+    public Athlete saveAthlete(Athlete athlete) {
+        log.info("Saving athlete: {}", athlete.getName());
+        return athleteRepository.save(athlete);
     }
 }

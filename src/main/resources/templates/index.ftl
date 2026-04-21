@@ -84,6 +84,7 @@
                 <div class="emoji">${sport.emoji}</div>
                 <h2>${sport.name}</h2>
                 <p>${sport.description}</p>
+                <a href="/admin" style="background-color:#e94560;">⚙️ Admin</a>
             </div>
         </a>
         </#list>

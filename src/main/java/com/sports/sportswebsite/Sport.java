@@ -1,10 +1,8 @@
 package com.sports.sportswebsite;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import java.util.List;
+import java.util.List;
 
 @Entity
 public class Sport {
@@ -68,4 +66,19 @@ public class Sport {
     public String getImageUrl() { return imageUrl; }
     public String getAthleteImageUrl() { return athleteImageUrl; }
     public String getAthleteName() { return athleteName; }
+    @OneToMany(mappedBy = "sportEntity", fetch = FetchType.LAZY)
+    private List<Athlete> athletes;
+
+    public List<Athlete> getAthletes() { return athletes; }
+    public void setName(String name) { this.name = name; }
+    public void setDescription(String description) { this.description = description; }
+    public void setEmoji(String emoji) { this.emoji = emoji; }
+    public void setUrlName(String urlName) { this.urlName = urlName; }
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+    public void setFact(String fact) { this.fact = fact; }
+    public void setFact1(String fact1) { this.fact1 = fact1; }
+    public void setFact2(String fact2) { this.fact2 = fact2; }
+    public void setFact3(String fact3) { this.fact3 = fact3; }
+    public void setFact4(String fact4) { this.fact4 = fact4; }
+    public void setFact5(String fact5) { this.fact5 = fact5; }
 }
