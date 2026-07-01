@@ -122,4 +122,8 @@ public class HomeController {
         model.addAttribute("georgianAthletes", athleteRepository.findByGeorgianTrueOrderBySportAsc());
         return "georgian-athletes";
     }
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
 }

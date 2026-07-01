@@ -83,6 +83,14 @@
     <a href="/georgian-athletes">🇬🇪 Georgian</a>
     <a href="/search">Search</a>
     <a href="/about">About</a>
+    <a href="/login" style="background-color:#0f3460;">🔐 Login</a>
+    <form action="/logout" method="post" style="display:inline;">
+        <button type="submit" style="background:none; border:none; color:white; cursor:pointer; padding:8px 18px; font-weight:bold; font-size:1em;">🚪 Logout</button>
+    </form>
+    <div style="margin-left:20px; display:flex; gap:10px;">
+        <a href="?lang=en" style="padding:5px 12px; background-color:#0f3460; border-radius:15px; font-size:0.85em;">🇬🇧 EN</a>
+        <a href="?lang=ka" style="padding:5px 12px; background-color:#0f3460; border-radius:15px; font-size:0.85em;">🇬🇪 KA</a>
+    </div>
 </nav>
 
 <div class="hero">

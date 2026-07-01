@@ -20,4 +20,5 @@ public class AppProperties {
     public void setDescription(String description) { this.description = description; }
     public String getEnv() { return env; }
     public void setEnv(String env) { this.env = env; }
+
 }
